@@ -1,0 +1,75 @@
+<template>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Compare Center</h2>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <table style="margin-bottom: 100px;">
+          <thead>
+            <tr>
+              <th></th>
+              <th>{compareDevice.Name}</th>
+              <th>
+                <lightning-combobox name="compare" label="Compare to:" value={value} placeholder="Select device"
+                  options={options} onchange={handleChange}></lightning-combobox>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                <img src={compareDeviceImageUrl} alt="Device" width="180px"/>
+              </td>
+              <td>
+                <img src={selectedDeviceImageUrl} alt="Device" width="180px"/>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Processor</b></td>
+              <td>{compareDevice.Processor__c}</td>
+              <td>{selectedDevice.Processor__c}</td>
+            </tr>
+            <tr>
+              <td><b>Display</b></td>
+              <td>{compareDevice.Display__c}</td>
+              <td>{selectedDevice.Display__c}</td>
+            </tr>
+            <tr>
+              <td><b>RAM</b></td>
+              <td>{compareDevice.RAM__c} GB</td>
+              <td>{selectedDevice.RAM__c} GB</td>
+            </tr>
+            <tr>
+              <td><b>Storage</b></td>
+              <td>{compareDevice.Storage__c} GB</td>
+              <td>{selectedDevice.Storage__c} GB</td>
+            </tr>
+            <tr>
+              <td><b>Price</b></td>
+              <td>{compareDevice.Price__c}</td>
+              <td>{selectedDevice.Price__c}</td>
+            </tr>
+            <tr>
+              <td><b>Quantity</b></td>
+              <td>{compareDevice.Quantity__c}</td>
+              <td>{selectedDevice.Quantity__c}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="slds-modal__footer">
+        <button class="slds-button slds-button_neutral" onclick={handleClosePopup}><label>Close</label></button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

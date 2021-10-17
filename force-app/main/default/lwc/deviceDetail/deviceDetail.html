@@ -1,0 +1,21 @@
+<template>
+  <lightning-card title="Device detail">
+    <template if:true={device}>
+      <div class="slds-p-around_small">
+        <img src={imageUrl} alt="Device" width="180px"/>
+        <p class="slds-var-m-bottom_xx-small">Name: {device.Name}</p>
+        <p class="slds-var-m-bottom_xx-small">Processor: {device.Processor__c}</p>
+        <p class="slds-var-m-bottom_xx-small">Display: {device.Display__c}</p>
+        <p class="slds-var-m-bottom_xx-small">RAM: {device.RAM__c} GB</p>
+        <p class="slds-var-m-bottom_xx-small">Storage: {device.Storage__c} GB</p>
+        <p class="slds-var-m-bottom_xx-small">Price: {device.Price__c}</p>
+        <p class="slds-var-m-bottom_xx-small">Quantity: {device.Quantity__c}</p>
+        <lightning-button label="Compare" title="Compare" onclick={handleCompare} class="slds-m-left_x-small"></lightning-button>
+        <lightning-input type="number" name="quantityImport" label="Enter a number" value={quantityImport} onchange={handleAmountChange}></lightning-input>
+        <lightning-button label="Import" title="Import" onclick={handleImport} class="slds-m-left_x-small"></lightning-button>
+        <lightning-input type="number" name="quantityExport" label="Enter a number" value={quantityExport} onchange={handleAmountChange}></lightning-input>
+        <lightning-button label="Export" title="Export" onclick={handleExport} class="slds-m-left_x-small"></lightning-button>
+      </div>
+    </template>
+  </lightning-card>
+</template>
