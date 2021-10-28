@@ -1,30 +1,74 @@
 <template>
   <template if:true={openComparePopup}>
-    <c-device-compare all-device={listDevice.data} compare-device={compareDevice} onclosepopup={handleClosePopup}></c-device-compare>
+    <c-device-compare all-device={listDevice.data} compare-device={compareDevice} onclosepopup={handleClosePopup}>
+    </c-device-compare>
   </template>
-  <lightning-card title="Park Center" icon-name="utility:animal_and_nature">
-    <div class="slds-card__body_inner">
+  <article class="slds-card">
+    <div class="slds-grid slds-einstein-header slds-card__header">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-grid slds-grid_vertical-align-center slds-size_3-of-4 slds-medium-size_2-of-3">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-utility-salesforce1">
+              <svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#salesforce1"></use>
+              </svg>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <h2 class="slds-truncate" title="Park Center">
+              <a href="#" class="slds-card__header-link" title="Park Center">
+                <span class="slds-text-heading_small">Park Center</span>
+              </a>
+            </h2>
+          </div>
+        </div>
+        <div class="slds-einstein-header__figure slds-size_1-of-4 slds-medium-size_1-of-3"></div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
       <lightning-layout multiple-rows="true" pull-to-boundary="small">
-        <lightning-layout-item size="3" class="slds-var-p-around_x-small">
-          <b>Brands:</b>
-          <lightning-button label="All" title="All" onclick={handleClick} class="slds-m-left_x-small">
-          </lightning-button>
+        <lightning-layout-item size="9" class="slds-var-p-around_x-small">
+          <lightning-layout multiple-rows="true" pull-to-boundary="small">
+            <lightning-layout-item size="12" class="slds-var-p-around_x-small">
+              <b>Name:</b><br />
+              <lightning-input type="text" name="deviceName" value={deviceName} onchange={handleChange}>
+              </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-var-p-around_x-small">
+              <b>Brands:</b>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-var-p-around_x-small">
+              <lightning-button label="All" variant="brand" title="All" onclick={handleSelectBrand}
+                class="slds-var-p-around_x-small">
+              </lightning-button>
+              <template for:each={listBrand.data} for:item="brand">
+                <lightning-button key={brand.Id} label={brand.Name} variant="brand" title={brand.Name}
+                  onclick={handleSelectBrand} class="slds-var-p-around_x-small">
+                </lightning-button>
+              </template>
+            </lightning-layout-item>
+          </lightning-layout>
         </lightning-layout-item>
-        <template for:each={listBrand.data} for:item="brand">
-          <lightning-layout-item key={brand.Id} size="3" class="slds-var-p-around_x-small">
-            <lightning-button label={brand.Name} title={brand.Name} onclick={handleClick} class="slds-m-left_x-small">
-            </lightning-button>
-          </lightning-layout-item>
-        </template>
+        <lightning-layout-item size="3" class="slds-var-p-around_x-small">
+          <lightning-radio-group name="priceRange" label="Price Range" options={priceRangeOptions}
+            value={priceRangeValue} type="radio" onchange={handleSelectRange}>
+          </lightning-radio-group>
+        </lightning-layout-item>
       </lightning-layout>
+      <hr style="border-top: 3px solid #bbb;">
       <lightning-layout multiple-rows="true" pull-to-boundary="small">
-        <b>Devices:</b><br/>
+        <lightning-layout-item size="12" class="slds-var-p-around_x-small">
+          <b>Devices:</b>
+        </lightning-layout-item>
         <template for:each={listDevice.data} for:item="device">
-          <lightning-layout-item key={device.Id} size="3" class="slds-p-around_xxx-small slds-m-around_x-small" style="border: 1px solid black; border-radius: .25rem">
+          <lightning-layout-item key={device.Id} size="3" class="slds-p-around_xxx-small slds-m-around_x-small"
+            style="border: 1px solid black; border-radius: .25rem">
             <c-device-tile device={device}></c-device-tile>
           </lightning-layout-item>
         </template>
       </lightning-layout>
     </div>
-  </lightning-card>
+    <footer class="slds-card__footer">
+    </footer>
+  </article>
 </template>

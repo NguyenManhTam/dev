@@ -1,17 +1,17 @@
 <template>
-  <lightning-card title={device.Brand__r.Name}>
+  <lightning-card title={title}>
     <div slot="actions">
       <lightning-button-icon icon-name="utility:search" variant="bare"
         alternative-text="Open record" onclick={handleOpenRecordClick}><label>Detail</label>
       </lightning-button-icon>
     </div>
-    <div class="slds-var-p-horizontal_small bear-tile-body">
+    <div class="slds-var-p-horizontal_small">
       <div class="slds-media">
         <div class="slds-media__figure">
-          <img src={imageUrl} alt="Device" width="180px"/>
+          <img src={imageUrl} alt="Device" width="150px"/>
         </div>
         <div class="slds-media__body">
-          <p class="slds-var-m-bottom_xx-small">{device.Name}</p>
+          <p class="slds-var-m-bottom_xx-small"></p>
         </div>
       </div>
     </div>

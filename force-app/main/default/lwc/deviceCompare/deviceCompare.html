@@ -27,10 +27,12 @@
             <tr>
               <td></td>
               <td>
-                <img src={compareDeviceImageUrl} alt="Device" width="180px"/>
+                <img src={compareDeviceImageUrl} alt="Device" width="180px" />
               </td>
               <td>
-                <img src={selectedDeviceImageUrl} alt="Device" width="180px"/>
+                <template if:true={selectedDeviceImageUrl}>
+                  <img src={selectedDeviceImageUrl} alt="Device" width="180px" />
+                </template>
               </td>
             </tr>
             <tr>
@@ -46,17 +48,23 @@
             <tr>
               <td><b>RAM</b></td>
               <td>{compareDevice.RAM__c} GB</td>
-              <td>{selectedDevice.RAM__c} GB</td>
+              <template if:true={selectedDevice.RAM__c}>
+                <td>{selectedDevice.RAM__c} GB</td>
+              </template>
             </tr>
             <tr>
               <td><b>Storage</b></td>
               <td>{compareDevice.Storage__c} GB</td>
-              <td>{selectedDevice.Storage__c} GB</td>
+              <template if:true={selectedDevice.Storage__c}>
+                <td>{selectedDevice.Storage__c} GB</td>
+              </template>
             </tr>
             <tr>
               <td><b>Price</b></td>
-              <td>{compareDevice.Price__c}</td>
-              <td>{selectedDevice.Price__c}</td>
+              <td>${compareDevice.Price__c}</td>
+              <template if:true={selectedDevice.Price__c}>
+                <td>${selectedDevice.Price__c}</td>
+              </template>
             </tr>
             <tr>
               <td><b>Quantity</b></td>

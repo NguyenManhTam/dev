@@ -1,13 +1,16 @@
 import { LightningElement, api } from 'lwc';
 import resources from '@salesforce/resourceUrl/TechnologyPark';
 
-
 export default class DeviceCompare extends LightningElement {
+  // Pass-in prop
   @api compareDevice;
-  compareDeviceImageUrl = '';
   @api allDevice;
+
+  // Init Attribute
+  compareDeviceImageUrl = '';
   selectedDevice = {};
   selectedDeviceImageUrl = '';
+
   get options() {
     let listOption = [{ label: '', value: '' }];
     this.allDevice.forEach(element => {
@@ -23,6 +26,7 @@ export default class DeviceCompare extends LightningElement {
   connectedCallback() {
     this.compareDeviceImageUrl = `${resources}/img/${this.compareDevice.Name.replaceAll(" ", "_")}.png`;
   }
+
   handleChange(event) {
     let id = event.detail.value;
     if(id) {
@@ -36,6 +40,7 @@ export default class DeviceCompare extends LightningElement {
       this.selectedDeviceImageUrl = '';
     }
   }
+  
   handleClosePopup() {
     this.dispatchEvent(new CustomEvent('closepopup'));
   }
